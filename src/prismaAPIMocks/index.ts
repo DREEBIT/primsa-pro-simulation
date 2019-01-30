@@ -2,7 +2,7 @@ import * as fs from "fs";
 import * as glob from "glob";
 import * as path from "path";
 
-const files = glob.sync(path.resolve(__filename + "/../*.json"))
+const files = glob.sync(path.resolve("./**/prismaAPIMocks/*.json"))
     .reduce((acc: any, filepath: string) => {
         const fileData = fs.readFileSync(filepath, "utf8");
 

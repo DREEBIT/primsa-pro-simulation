@@ -3,6 +3,7 @@ import commonjs from 'rollup-plugin-commonjs'
 import sourceMaps from 'rollup-plugin-sourcemaps'
 import camelCase from 'lodash.camelcase'
 import typescript from 'rollup-plugin-typescript2'
+import copy from 'rollup-plugin-copy-glob';
 import json from 'rollup-plugin-json'
 
 const pkg = require('./package.json')
@@ -42,5 +43,9 @@ export default {
 
     // Resolve source maps to the original source
     sourceMaps(),
+
+    copy([
+      { files: 'src/**/prismaAPIMocks/*.json', dest: 'dist/lib' },
+    ], { verbose: true, watch: false })
   ],
 }

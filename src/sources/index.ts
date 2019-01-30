@@ -1,5 +1,5 @@
 import * as _ from "lodash";
-import jsonMocks from "./../mocks/index";
+import jsonMocks from "../prismaAPIMocks/index";
 
 interface IMockMap {
     [s: string]: any;
