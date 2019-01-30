@@ -1,0 +1,18 @@
+{
+  "data": {
+    "sessionId": "00:A0:41:02:18:93:0033:00000003",
+    "ipAddress": "192.168.1.2",
+    "controlled": true,
+    "locked": false,
+    "amInControl": true,
+    "canRequestControl": true,
+    "canTakeControl": true,
+    "canForceControl": true,
+    "secondsSinceLastRequest": 0,
+    "secondsSinceLastControlRequest": 14,
+    "secondsSinceLastDataRequest": null,
+    "clientName": null
+  },
+  "name": "got",
+  "origin": "/mmsp/communication/controlInfo"
+}

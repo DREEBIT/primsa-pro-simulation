@@ -1,0 +1,7 @@
+{
+  "data": {
+    "scanStop": "EndOfScan"
+  },
+  "name": "wasSet",
+  "origin": "/mmsp/scanSetup/set"
+}

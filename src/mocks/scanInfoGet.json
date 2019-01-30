@@ -1,0 +1,12 @@
+{
+  "data": {
+    "firstScan": 1,
+    "lastScan": 1,
+    "currentScan": 2,
+    "pointsPerScan": 22,
+    "pointsInCurrentScan": 0,
+    "scanning": false
+  },
+  "name": "got",
+  "origin": "/mmsp/scanInfo"
+}
