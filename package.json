@@ -1,7 +1,7 @@
 {
   "name": "prisma-pro-simulation",
-  "version": "1.0.0",
-  "description": "",
+  "version": "0.0.2",
+  "description": "Simulation Server for Prisma Pro",
   "main": "dist/prisma-pro-simulation.umd.js",
   "module": "dist/prisma-pro-simulation.es5.js",
   "typings": "dist/types/prisma-pro-simulation.d.ts",
@@ -20,6 +20,10 @@
   },
   "keywords": [],
   "author": "Toni Möckel",
+  "repository": {
+    "type": "git",
+    "url": "http://bitbucket.dreebitnet.local/projects/NM/repos/prisma-pro-api-simulation"
+  },
   "license": "ISC",
   "dependencies": {
     "express-mock-server": "^2.0.1",
