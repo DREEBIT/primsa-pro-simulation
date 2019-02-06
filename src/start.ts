@@ -1,5 +1,5 @@
 import start from "./index";
 
 start({
-    port: 5002
+    port: 5002,
 });

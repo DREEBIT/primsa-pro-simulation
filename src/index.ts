@@ -1,7 +1,7 @@
 import { serverStart } from "express-mock-server";
 import * as _ from "lodash";
+import root from "./root";
 import sources from "./sources";
-
 
 
 const init = (configArg: {
@@ -14,7 +14,13 @@ const init = (configArg: {
     port: 8000,
   });
 
-  return serverStart([sources], config);
+  const app = serverStart([sources], config);
+
+  const server = app._events.request;
+
+  server.get("/", root);
+
+  return app;
 
 };
 

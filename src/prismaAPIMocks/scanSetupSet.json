@@ -1,0 +1,13 @@
+{
+  "data": {
+    "startChannel": 1,
+    "stopChannel": 3
+  },
+  "name": "wasSet",
+  "origin": "/mmsp/scanSetup/set",
+  "example": [
+    "/mmsp/scanSetup/set?startchannel=1&stopchannel=3",
+    "/mmsp/scanSetup/set?scancount=-1",
+    "/mmsp/scanSetup/set?scanstart=1"
+  ]
+}

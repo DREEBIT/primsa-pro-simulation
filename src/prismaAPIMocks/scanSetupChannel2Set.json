@@ -1,0 +1,14 @@
+{
+  "data": {
+    "channel": [
+      {
+        "@id": 2,
+        "channelMode": "TotalPressure",
+        "enabled": "True",
+        "dwell": 1.000
+      }
+    ]
+  },
+  "name": "wasSet",
+  "origin": "/mmsp/scanSetup/channel/2/set?channelMode=TotalPressure&enabled=True&dwell=1"
+}

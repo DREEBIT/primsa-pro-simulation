@@ -1,32 +1,29 @@
-import * as _ from "lodash";
-import jsonMocks from "../prismaAPIMocks/index";
+import _ from "lodash";
+import dynamics from "./../dynamics";
+import db from "./../persists";
 
-interface IMockMap {
-    [s: string]: any;
-}
+const paths = [
+    ...Object.keys(dynamics),
+    ...Object.keys(db.get("paths").value()),
+];
 
-const getPathMocks = _.mapKeys(jsonMocks, (value: any, key: string) => {
-    const origin = _.get(value, "origin", "/unknown");
-    let suffix = "";
-    if (!origin.endsWith("/get") && !origin.endsWith("/set")) {
-        suffix = "/get";
-    }
-    return origin + suffix;
-});
-
-const map: IMockMap = {
-    ...getPathMocks,
-};
-
-const mocks = Object.keys(map).map((path) => {
+const mocks = paths.map((path) => {
     return {
         request: {
             method: "GET",
             path,
         },
         response: (urlParams: any, qsParams: any , bodyParams: any) => {
+
+            let body = null;
+            if (dynamics[path]) {
+                body = dynamics[path](path, urlParams, qsParams, bodyParams);
+            } else {
+                body = db.get("paths").get(path).value();
+            }
+
             return {
-                body: JSON.stringify(map[path]),
+                body: JSON.stringify(body),
                 statusCode: 200,
             };
         },
