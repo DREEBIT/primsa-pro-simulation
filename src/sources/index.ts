@@ -20,7 +20,7 @@ const channelSimulation = new ChannelSimulation({interval: 200, onValuesUpdate: 
     }).write();
 }});
 
-channelSimulation.startScan(db.get("scanSetup.data").value())
+// channelSimulation.startScan(db.get("scanSetup.data").value())
 
 const mocks = paths.map((path) => {
     return {
