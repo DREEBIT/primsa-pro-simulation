@@ -1,7 +1,8 @@
 import * as _ from "lodash";
+import {IRequestOptions} from "../types";
 import db from "./../persists";
 
-export default (path: string, urlParams: any, qsParams: any , bodyParams: any) => {
+export default ({urlParams, bodyParams, qsParams, path}: IRequestOptions) => {
 
     let channelId = _.get(urlParams, "channelId", _.get(qsParams, "@channelId"), null);
     if (!channelId) {

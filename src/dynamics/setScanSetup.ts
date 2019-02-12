@@ -1,4 +1,5 @@
 import * as _ from "lodash";
+import {IRequestOptions} from "../types";
 import db from "./../persists";
 
 const keys = ["maxChannels",
@@ -23,7 +24,7 @@ const keys = ["maxChannels",
     "leakCheckMass",
     ];
 
-export default (path: string, urlParams: any, qsParams: any , bodyParams: any) => {
+export default ({urlParams, bodyParams, qsParams, path, channelSimulation}: IRequestOptions) => {
 
 
     const query = db.get("scanSetup");
@@ -35,6 +36,15 @@ export default (path: string, urlParams: any, qsParams: any , bodyParams: any) =
         if (key !== "scanStop") {
             acc[key] = parseInt(acc[key], undefined);
         }
+
+        if (key === "scanstart" && qsParams[key] === "1") {
+            channelSimulation.startScan(query.value());
+        }
+
+        if (key === "scanstop") {
+            channelSimulation.stopScan();
+        }
+
         return acc;
     }, {});
 

@@ -8,7 +8,7 @@ interface IMockMap {
     [s: string]: any;
 }
 
-//To compile with rollup
+// To compile with rollup
 const low: any = (low_ as any).default || low_;
 
 const db = low(new Memory());
@@ -25,6 +25,15 @@ const getPathMocks: IMockMap = _.mapKeys(jsonMocks, (value: any, key: string) =>
 db.defaults({
     paths: getPathMocks,
     scanSetup,
+    measurementData: {
+        name: "got",
+        origin: "/mmsp/measurement/data",
+        data: {
+            start: 0,
+            scansize: 0,
+            values: [],
+        },
+    },
 })
     .write();
 

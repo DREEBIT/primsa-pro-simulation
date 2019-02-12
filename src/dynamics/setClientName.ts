@@ -1,7 +1,8 @@
 import * as _ from "lodash";
+import {IRequestOptions} from "../types";
 import db from "./../persists";
 
-export default (path: string, urlParams: any, qsParams: any , bodyParams: any) => {
+export default ({urlParams, bodyParams, qsParams, path}: IRequestOptions) => {
 
     const getPath = path.replace("set", "get");
     const old = db.get("paths").get(getPath).value();

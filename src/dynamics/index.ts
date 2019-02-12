@@ -1,4 +1,5 @@
 import getChannel from "./getChannel";
+import getMeasurementData from "./getMeasurementData";
 import getScanSetup from "./getScanSetup";
 import setChannel from "./setChannel";
 import setClientName from "./setClientName";
@@ -12,5 +13,6 @@ export default {
     "/mmsp/scanSetup/get": getScanSetup,
     "/mmsp/scanSetup/set": setScanSetup,
     "/mmsp/scanSetup/:key/get": getScanSetup,
+    "/mmsp/measurement/data/get": getMeasurementData
 };
 
