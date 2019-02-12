@@ -17,7 +17,7 @@ export default {
     { file: pkg.module, format: 'es', sourcemap: true },
   ],
   // Indicate here external modules you don't wanna include in your bundle (i.e.: 'lodash')
-  external: ["lodash","express-mock-server","glob", "lowdb"],
+  external: ["lodash","express-mock-server","glob", "lowdb", "lowdb/adapters/Memory"],
   watch: {
     include: 'src/**',
   },

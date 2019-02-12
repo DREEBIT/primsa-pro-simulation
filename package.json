@@ -1,6 +1,6 @@
 {
   "name": "@dreebit/prisma-pro-simulation",
-  "version": "0.0.10",
+  "version": "0.0.11",
   "description": "Simulation Server for Prisma Pro",
   "main": "dist/prisma-pro-simulation.umd.js",
   "module": "dist/prisma-pro-simulation.es5.js",
@@ -17,7 +17,8 @@
     "build:rollup": "tsc --module commonjs && rollup -c rollup.config.js",
     "build:tsc": "rimraf dist && tsc",
     "kill:port": "kill-port 5002",
-    "deploy": "npm publish"
+    "deploy": "npm publish",
+    "build:rollup:deploy": "yarn run build:rollup && yarn run deploy"
   },
   "keywords": [],
   "author": "Toni Möckel",
