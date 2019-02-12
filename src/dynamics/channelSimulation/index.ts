@@ -25,7 +25,7 @@ class ChannelSimulation {
     private scans: IScanData[] = [];
     private currentScan?: IScanData;
     private interval: number = 300;
-    private intervalId?: any;
+    private intervalId?: any = null;
     private onValuesUpdate?: UpdateValuesCallback;
     private sweepLimit = 50;
     private maxScanSize = 1000;
@@ -52,14 +52,17 @@ class ChannelSimulation {
     public stopScan() {
         if (this.intervalId) {
             clearInterval(this.intervalId);
+            this.intervalId = null;
         }
+    }
+
+    public isScanning() {
+        return !!this.intervalId;
     }
 
     private onInterval(scanSetup: IScanSetup) {
 
-
         const newScanValues = this.generateScanData(scanSetup);
-
 
         const currentData = [..._.get(this.currentScan, "data", [])];
         const start = currentData.length;
@@ -86,7 +89,7 @@ class ChannelSimulation {
             this.currentScan.data = [];
         }
 
-        if (this.scans.length > this.maxScanSize){
+        if (this.scans.length > this.maxScanSize) {
             this.scans = [];
         }
 

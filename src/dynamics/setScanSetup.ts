@@ -37,8 +37,8 @@ export default ({urlParams, bodyParams, qsParams, path, channelSimulation}: IReq
             acc[key] = parseInt(acc[key], undefined);
         }
 
-        if (key === "scanstart" && qsParams[key] === "1") {
-            channelSimulation.startScan(query.value());
+        if (key === "scanstart") {
+            channelSimulation.startScan(query.get("data").value());
         }
 
         if (key === "scanstop") {

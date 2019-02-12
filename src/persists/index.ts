@@ -1,6 +1,6 @@
 import * as _ from "lodash";
 import * as low_ from "lowdb";
-import * as Memory_ from "lowdb/adapters/Memory";
+import * as Memory from "lowdb/adapters/Memory";
 import jsonMocks from "../prismaAPIMocks/index";
 import * as scanSetup from "./seed/scanSetup.json";
 
@@ -10,7 +10,7 @@ interface IMockMap {
 
 // To compile with rollup
 const low: any = (low_ as any).default || low_;
-const Memory: any = (Memory_ as any).default || Memory_;
+// const Memory: any = (Memory_ as any).default || Memory_;
 
 const db = low(new Memory());
 
