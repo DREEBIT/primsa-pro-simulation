@@ -4,17 +4,12 @@ import db from "./../persists";
 
 export default ({urlParams, bodyParams, qsParams, path}: IRequestOptions) => {
 
-    let data = db.get("scanSetup.data").value();
-
-    const key = _.get(urlParams, "key");
-    if (key) {
-       data = data[key];
-    }
-
     return {
-        data,
+        data: db.get("generalControl.setEM", "Off").value(),
         name: "wasSet",
-        origin: path,
+        origin: `/mmsp/generalControl/setEM/get`,
     };
+
+
 
 };

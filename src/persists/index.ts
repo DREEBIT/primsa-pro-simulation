@@ -17,7 +17,7 @@ const db = low(new Memory());
 const getPathMocks: IMockMap = _.mapKeys(jsonMocks, (value: any, key: string) => {
     const origin = _.get(value, "origin", "/unknown");
     let suffix = "";
-    if (!origin.endsWith("/get") && !origin.endsWith("/set")) {
+    if (!origin.includes("/get") && !origin.includes("/set")) {
         suffix = "/get";
     }
     return origin + suffix;
@@ -26,6 +26,10 @@ const getPathMocks: IMockMap = _.mapKeys(jsonMocks, (value: any, key: string) =>
 db.defaults({
     paths: getPathMocks,
     scanSetup,
+    generalControl: {
+      setEM: "Off",
+      setEmission: "Off",
+    },
     measurementData: {
         name: "got",
         origin: "/mmsp/measurement/data",

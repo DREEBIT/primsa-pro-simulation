@@ -10,11 +10,10 @@ export default ({urlParams, bodyParams, qsParams, path}: IRequestOptions) => {
     }
     channelId = parseInt(channelId, undefined);
 
-    let data = db.get("scanSetup.channel").find({
+    let data = db.get("scanSetup.data.channel").find({
         "@id": channelId,
     }).value();
 
-    console.log(db.get("scanSetup").value());
 
     if (urlParams.key) {
         data = _.get(data, urlParams.key);

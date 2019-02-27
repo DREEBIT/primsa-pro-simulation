@@ -1,8 +1,17 @@
 import * as _ from "lodash";
 import {IChannel, IScanSetup} from "../../types";
+import digitalInput from "./digitalInput";
+import digitalOutput from "./digitalOutput";
+import externalGaugePressure from "./externalGaugePressure";
+import newHardwareErrors from "./newHardwareErrors";
+import newHardwareWarnings from "./newHardwareWarnings";
+import randomExpNumberArr from "./randomExpNumberArr";
+import single from "./single";
 import sweep from "./sweep";
+import systemStatus from "./systemStatus";
 import timeStamp from "./timeStamp";
 import totalPressure from "./totalPressure";
+import userTimer from "./userTimer";
 
 
 const factories: {
@@ -11,6 +20,23 @@ const factories: {
     Timestamp: timeStamp,
     TotalPressure: totalPressure,
     Sweep: sweep,
+    Single: single,
+    SystemStatus: systemStatus,
+    ExternalGaugePressure: randomExpNumberArr,
+    AnalogInput1V: randomExpNumberArr,
+    AnalogInput2V: randomExpNumberArr,
+    AnalogInput3V: randomExpNumberArr,
+    AnalogInput4V: randomExpNumberArr,
+    AnalogInput5V: randomExpNumberArr,
+    AnalogInput6V: randomExpNumberArr,
+    AnalogInput7V: randomExpNumberArr,
+    AnalogInput8V: randomExpNumberArr,
+    AnalogInput9V: randomExpNumberArr,
+    NewHardwareWarnings: newHardwareWarnings,
+    NewHardwareErrors: newHardwareErrors,
+    DigitalInput: digitalInput,
+    DigitalOutput: digitalOutput,
+    UserTimer1: userTimer,
 };
 
 export interface IScanData {
@@ -108,7 +134,7 @@ class ChannelSimulation {
             })
             .map((channel: IChannel) => {
                 const factory = _.get(factories, channel.channelMode);
-                return factory ? factory(channel) : [];
+                return factory ? factory(channel) : [0];
             })
             .flatten()
             .value();

@@ -1,5 +1,5 @@
 {
   "data": "Session",
   "name": "wasSet",
-  "origin": "/mmsp/communication/controlLock"
+  "origin": "/mmsp/communication/controlLock/set?Session"
 }

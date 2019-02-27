@@ -1,18 +1,16 @@
 import * as _ from "lodash";
 import {IChannel} from "../../types";
+import randomExpNumber from "./randomExpNumber";
 
-function getRandomArbitrary(min, max) {
-    return Math.random() * (max - min) + min;
-}
+
 
 export default function(channel: IChannel): any[] {
 
-    const count = _.get(channel, "ppamu") * (_.get(channel, "stopMass") - _.get(channel, "startMass"));
+    const count = _.get(channel, "ppamu") * (_.get(channel, "stopMass") - _.get(channel, "startMass")) + 1;
 
     const arr = new Array(count)
         .fill(undefined)
-        .map((val, idx) =>
-            parseFloat(`${Math.floor(getRandomArbitrary(100, 999)) / 100}e-${Math.floor(getRandomArbitrary(12, 14))}`));
+        .map((val, idx) => randomExpNumber())
 
     return arr;
 }

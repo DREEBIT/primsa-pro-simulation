@@ -10,7 +10,7 @@ export default ({urlParams, bodyParams, qsParams, path}: IRequestOptions) => {
     }
 
     channelId = parseInt(channelId, undefined);
-    const query = db.get("scanSetup.channel").find({
+    const query = db.get("scanSetup.data.channel").find({
         "@id": channelId,
     });
     if (qsParams.dwell) {
