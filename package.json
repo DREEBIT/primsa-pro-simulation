@@ -1,6 +1,6 @@
 {
   "name": "@dreebit/prisma-pro-simulation",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "Simulation Server for Prisma Pro",
   "main": "dist/prisma-pro-simulation.umd.js",
   "module": "dist/prisma-pro-simulation.es5.js",
