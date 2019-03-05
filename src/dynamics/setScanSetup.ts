@@ -27,9 +27,10 @@ const keys = ["maxChannels",
 export default ({urlParams, bodyParams, qsParams, path, channelSimulation}: IRequestOptions) => {
 
 
-    const query = db.get("scanSetup");
+    const query = db.get("scanSetup.data");
 
-    const params = Object.keys(qsParams).reduce((acc, key) => {
+    const qsParamsKeys = Object.keys(qsParams);
+    const params = qsParamsKeys.reduce((acc: any, key) => {
         if (keys.indexOf(key) > -1) {
             acc[key] = qsParams[key];
         }
@@ -37,35 +38,65 @@ export default ({urlParams, bodyParams, qsParams, path, channelSimulation}: IReq
             acc[key] = parseInt(acc[key], undefined);
         }
 
+        if (key === "startchannel") {
+            acc.startChannel = Number(qsParams[key]);
+        }
+
+        if (key === "stopchannel") {
+            acc.stopChannel = Number(qsParams[key]);
+        }
+
         if (key === "scanstart") {
-            channelSimulation.startScan(query.get("data").value());
+            channelSimulation.startScan(query.value());
         }
 
         if (key === "scanstop") {
             channelSimulation.stopScan();
         }
-
         return acc;
     }, {});
 
-    if (Object.keys(params).length) {
+    if (qsParamsKeys.indexOf("@channel") > -1){
+
         const data = query
+            .get("channel")
+            .find({
+                "@id": Number(qsParams["@channel"]),
+            })
             .assign(
-                params,
+                qsParams,
             )
             .write();
 
         return {
-            data: {
-                ...Object.keys(params).reduce((acc, key) => {
-                    acc[key] = data[key];
-                    return acc;
-                }, {}),
-            },
+            data,
             name: "wasSet",
             origin: path,
         };
+
+    }else {
+
+        if (Object.keys(params).length) {
+            const data = query
+                .assign(
+                    params,
+                )
+                .write();
+
+            return {
+                data: {
+                    ...Object.keys(params).reduce((acc, key) => {
+                        acc[key] = data[key];
+                        return acc;
+                    }, {}),
+                },
+                name: "wasSet",
+                origin: path,
+            };
+        }
     }
+
+
 
 
 
