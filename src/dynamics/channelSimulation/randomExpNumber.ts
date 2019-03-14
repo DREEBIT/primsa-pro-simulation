@@ -3,5 +3,5 @@ function getRandomArbitrary(min, max) {
 }
 
 export default (): number => {
-    return parseFloat(`${Math.floor(getRandomArbitrary(100, 999)) / 100}e-${Math.floor(getRandomArbitrary(12, 14))}`);
+    return parseFloat(`${Math.floor(getRandomArbitrary(100, 999)) / 100}e-${Math.floor(getRandomArbitrary(7, 14))}`);
 };
