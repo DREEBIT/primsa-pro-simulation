@@ -5,7 +5,7 @@ function getRandomArbitrary(min, max) {
 export default (randomNeg?: boolean): number => {
     let pre = "";
     if (randomNeg) {
-        pre = Math.floor(getRandomArbitrary(0, 1)) ? "-" : "";
+        pre = getRandomArbitrary(0, 1) > 0.5 ? "-" : "";
     }
     return parseFloat(`${pre}${Math.floor(getRandomArbitrary(100, 999)) / 100}e-${Math.floor(getRandomArbitrary(7, 14))}`);
 };
