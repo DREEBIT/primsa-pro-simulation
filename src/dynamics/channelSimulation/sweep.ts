@@ -10,7 +10,7 @@ export default function(channel: IChannel): any[] {
 
     const arr = new Array(count)
         .fill(undefined)
-        .map((val, idx) => randomExpNumber())
+        .map((val, idx) => randomExpNumber(true))
 
     return arr;
 }
