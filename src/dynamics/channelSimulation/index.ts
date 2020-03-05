@@ -3,6 +3,7 @@ import {IChannel, IScanSetup} from "../../types";
 import digitalInput from "./digitalInput";
 import digitalOutput from "./digitalOutput";
 import externalGaugePressure from "./externalGaugePressure";
+import externalPressure from "./externalPressure";
 import newHardwareErrors from "./newHardwareErrors";
 import newHardwareWarnings from "./newHardwareWarnings";
 import randomExpNumberArr from "./randomExpNumberArr";
@@ -18,7 +19,7 @@ const factories: {
     [s: string]: (channel: IChannel) => any[];
 } = {
     Timestamp: timeStamp,
-    TotalPressure: totalPressure,
+    TotalPressure: randomExpNumberArr,
     Sweep: sweep,
     Single: single,
     SystemStatus: systemStatus,

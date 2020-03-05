@@ -15,7 +15,7 @@ export default ({urlParams, bodyParams, qsParams, path}: IRequestOptions) => {
         values = _.drop(values, start);
     }
     if (end > 0) {
-        values = _.take(values, end - start);
+        values = _.take(values, end - start + 1);
     }
     _.set(measurement, "data.values", values);
     _.set(measurement, "data.start", start);
